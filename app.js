@@ -16,7 +16,7 @@ app.use(express.static(__dirname + '/public'));
 app.use(bodyParser.urlencoded({ extended: true }));
  
 app.use(require("express-session")({
-    secret: "Rusty is a dog",
+    secret: "to much coffee",
     resave: false,
     saveUninitialized: false
 }));
@@ -57,7 +57,7 @@ app.post("/register", function (req, res) {
             password, function (err, user) {
         if (err) {
             console.log(err);
-            return res.render("register");
+            return res.render("error");
         }
 
         passport.authenticate("local")(
@@ -67,7 +67,11 @@ app.post("/register", function (req, res) {
         });
     });
 });
- 
+ //Showing login form
+app.get("/error", function (req, res) {
+    res.render("error");
+});
+
 //Showing login form
 app.get("/login", isNotLoggedIn, function (req, res) {
     res.render("login");
@@ -76,7 +80,7 @@ app.get("/login", isNotLoggedIn, function (req, res) {
 //Handling user login
 app.post("/login", passport.authenticate("local", {
     successRedirect: "/posts",
-    failureRedirect: "/login"
+    failureRedirect: "/error"
 }), function (req, res) {
 });
  
