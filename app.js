@@ -38,8 +38,9 @@ app.get("/", isNotLoggedIn, function (req, res) {
 });
  
 // Showing secret page
-app.get("/posts", isLoggedIn, function (req, res) {
-    res.render("posts");
+app.get("/posts", isLoggedIn, async function (req, res) {
+    const cposts = await Post.find({});
+    res.render("posts", {postss:cposts});
 });
  
 // Showing register form
@@ -60,8 +61,9 @@ app.post("/register", function (req, res) {
         }
 
         passport.authenticate("local")(
-            req, res, function () {
-            res.render("posts");
+            req, res, async function () {
+                const cposts = await Post.find({});
+                res.render("posts", {postss:cposts});
         });
     });
 });
@@ -79,12 +81,13 @@ app.post("/login", passport.authenticate("local", {
 });
  
 //Handling creating a new post
-app.post("/newpost", function (req, res) {
+app.post("/newpost", async function (req, res) {
     var username = req.user.username
-    var content = req.body.content
+    var content = req.body.postinput
     const npost = new Post({ username: username, content: content });
-    npost.save()
-    res.render("posts");
+    const x = await npost.save()
+    const cposts = await Post.find({});
+    res.render("posts", {postss:cposts});
 });
 
 //Handling user logout
@@ -98,9 +101,10 @@ function isLoggedIn(req, res, next) {
     res.redirect("/");
 }
 
-function isNotLoggedIn(req, res, next) {
+async function isNotLoggedIn(req, res, next) {
     if (!(req.isAuthenticated())) return next();
-    res.redirect("/posts");
+    const cposts = await Post.find({});
+    res.render("posts", {postss:cposts});
 }
  
 var port = process.env.PORT || 3000;

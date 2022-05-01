@@ -28,8 +28,12 @@
                         placeholder="Write a post">
                     <button>post</button>
                 </form>
-                Previous posts:
- 
+                <br>
+                <p id="previousPost">Previous posts:</p>
+                <% for(var i=postss.length-1; i >= 0; i--) {%>
+                    <p class="username"><%= postss[i].username %> posted: </p>
+                    <p class="posts"><%= postss[i].content %></p>
+                <% } %>
             </div>
         </div>
     </main>

@@ -3,12 +3,30 @@ main .content {
     border-radius: 0 5px 5px 5px;
     background: #eee;
 }
-
+main .posts {
+        border-radius: 10px;
+        border: 2px solid #aad2f7b6;
+        background-color: #aad2f77e;
+        text-align: center;
+        padding: 15px;
+      }
+#previousPost {
+    text-align: center;
+    font-size: 2em;
+}
+form {
+    text-align: center;
+}
+main h2 {
+    text-align: center;
+    font-size: 2em;
+}
 header {
     background: white;
     overflow: auto;
     padding: 25px 0 25px 0;
     border-bottom: 1px solid #ddd;
+
 }  
 header h1 {
     float: left;
