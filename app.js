@@ -107,7 +107,7 @@ async function isNotLoggedIn(req, res, next) {
     res.render("posts", {postss:cposts});
 }
  
-var port = process.env.PORT || 3000;
+var port = 80;
 app.listen(port, function () {
     console.log("Server Has Started!");
 });
