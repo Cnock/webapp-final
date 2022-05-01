@@ -1,0 +1,57 @@
+main .content {
+    padding: 30px 10px 30px 10px;
+    border-radius: 0 5px 5px 5px;
+    background: #eee;
+}
+
+header {
+    background: white;
+    overflow: auto;
+    padding: 25px 0 25px 0;
+    border-bottom: 1px solid #ddd;
+}  
+header h1 {
+    float: left;
+    width: 570px;
+    font-style: italic;
+    font-size: 3em;
+    color: rgb(82, 159, 189);
+}
+
+header nav {
+    float: right;
+    width: 285px;
+    }
+header nav a {
+    color: rgb(82, 159, 189);
+    font-size: 1.2em;
+}
+header, main, footer {
+    min-width: 855px;
+}
+header .container, main .container, footer .container {
+    max-width: 855px;
+    margin: auto;
+}
+body {
+    background-color: #aad2f77e;
+}
+header {
+    background-color: white;
+    overflow: auto;
+}
+main {
+    background-color: white;
+    overflow: auto;
+}
+footer {
+    clear: both;
+}
+header h1, main .btext, footer .contact{
+    float: left;
+    width: 570px;
+}
+header nav, main .bimg, footer .sitemap {
+    float: right;
+    width: 285px;
+}
